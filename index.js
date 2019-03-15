@@ -1,3 +1,5 @@
+
+
 // Dependencies
 const http = require('http');
 const url = require('url');
@@ -70,5 +72,3 @@ let server = http.createServer(function (req, res) {
 server.listen(config.port,function(){
     console.log('The server is up and running on port '+config.port+' in '+config.envName+' mode.');
 });
-
-

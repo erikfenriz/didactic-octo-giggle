@@ -1,6 +1,4 @@
-// import {web3} from '../deploy';
-
-const address = '0x4780CdE8bF58C661ce15CB2857694231fD042E16';
+const address = '0xac1C736af4662eE19b6a380A5ca9d081286F78AF';
 const abi = [{
     "constant": true,
     "inputs": [],
@@ -14,6 +12,14 @@ const abi = [{
     "inputs": [],
     "name": "getInactivePlayers",
     "outputs": [{"name": "", "type": "address[]"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "elapsedTime",
+    "outputs": [{"name": "", "type": "uint256"}],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -36,8 +42,32 @@ const abi = [{
 }, {
     "constant": true,
     "inputs": [],
+    "name": "number",
+    "outputs": [{"name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
     "name": "getPlayers",
     "outputs": [{"name": "", "type": "address[]"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{"name": "", "type": "address"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"name": "", "type": "uint256"}],
+    "name": "inactivePlayers",
+    "outputs": [{"name": "", "type": "address"}],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -62,6 +92,14 @@ const abi = [{
     "inputs": [],
     "name": "getNumber",
     "outputs": [{"name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"name": "", "type": "uint256"}],
+    "name": "players",
+    "outputs": [{"name": "", "type": "address"}],
     "payable": false,
     "stateMutability": "view",
     "type": "function"

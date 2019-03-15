@@ -2,10 +2,11 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const {interface, bytecode} = require('./compile');
 const {wallet} = require("./.env");
+require('dotenv').config();
 
 const provider = new HDWalletProvider(
     {wallet},
-    "https://rinkeby.infura.io/v3/60e0104a8f47427abe1c077cf2e37197"
+    "https://rinkeby.infura.io/v3/" + process.env.API_KEY
 );
 
 const web3 = new Web3(provider);
@@ -24,4 +25,4 @@ const deploy = async () => {
 };
 deploy();
 
-module.exports = web3;
+module.exports = {web3};

@@ -1,11 +1,11 @@
 pragma solidity ^0.4.17;
 
 contract Lottery {
-    address private owner;
-    address[] private players;
-    address[] private inactivePlayers;
-    uint private elapsedTime;
-    uint private number = 0;
+    address public owner;
+    address[] public players;
+    address[] public inactivePlayers;
+    uint public elapsedTime;
+    uint public number = 0;
     string public description = "This is the lottery where you will most likely to lose all the money. Sorry about that";
     bool public isActive = true;
 
