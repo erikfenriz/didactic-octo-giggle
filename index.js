@@ -1,11 +1,11 @@
-
-
+let {getDescription, getAccounts, getTimeElapsed, getActivity} = require('./src/app');
+const {address} = require('./src/lottery');
 // Dependencies
 const http = require('http');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const config = require("./server/config");
-const {handlers, router} = require("./server/routes");
+// const {handlers, router} = require("./server/routes");
 
 // Configure the server to respond to all requests with a string
 let server = http.createServer(function (req, res) {
@@ -69,6 +69,90 @@ let server = http.createServer(function (req, res) {
 });
 
 // Start the server
-server.listen(config.port,function(){
-    console.log('The server is up and running on port '+config.port+' in '+config.envName+' mode.');
+server.listen(config.port, function () {
+    console.log('The server is up and running on port ' + config.port + ' in ' + config.envName + ' mode.');
 });
+
+let description, account, elapsedTime, isActive;
+getDescription().then(desc => description = desc);
+getAccounts().then(acc => account = acc);
+getTimeElapsed().then(time => elapsedTime = time);
+getActivity().then(activity => isActive = activity);
+
+// enterLottery();
+
+//Define all the handlers
+let handlers = {};
+
+// RestAPI route handlers
+handlers.api = function (data, callback) {
+    callback(200, {'name': 'sample handler'});
+};
+
+// RestAPI route handlers
+handlers.info = function (data, callback) {
+    callback(200, {
+        "description": description,
+        "address_input": address,
+        "address_owner": account[0],
+        "up_to_time": elapsedTime + " seconds",
+        "lottery_is_active": isActive
+    });
+};
+
+handlers.payments = function (data, callback) {
+    callback(200, [
+            {
+                "address": "number",
+                "transfer": "number",
+                "time": "datetime",
+            },
+            {
+                "address": "number",
+                "transfer": "number",
+                "time": "datetime",
+            }
+        ]
+    );
+};
+
+handlers.inactivePayments = function (data, callback) {
+    callback(200, [
+        {
+            "address": "number",
+            "transfer": "number",
+            "time": "datetime",
+        },
+        {
+            "address": "number",
+            "transfer": "number",
+            "time": "datetime",
+        }]
+    );
+};
+
+handlers.result = function (data, callback) {
+    callback(200,
+        {
+            address: "address",
+            total: "total",
+            time: "time",
+            result: "result"
+        }
+    );
+};
+
+// Not found handler
+handlers.notFound = function (data, callback) {
+    callback(404);
+};
+
+// Define the request router
+const router = {
+    'api/info': handlers.info,
+    'api/payments': handlers.payments,
+    'api/inactivePayments': handlers.inactivePayments,
+    'api/result': handlers.result,
+};
+
+// module.exports = {handlers, router};

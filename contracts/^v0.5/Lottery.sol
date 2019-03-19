@@ -1,6 +1,22 @@
 pragma solidity >=0.4.22 <0.6.0;
 
 contract Lottery {
+    struct Payments {
+        address players;
+        uint value;
+        uint time;
+    }
+
+    struct InactivePayments {
+        address players;
+        uint value;
+        uint time;
+    }
+
+    Payments[] public payments;
+    InactivePayments[] public inactivePayments;
+
+
     address payable private owner;
     address payable[] private players;
     address[] private inactivePlayers;

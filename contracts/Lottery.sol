@@ -1,6 +1,22 @@
 pragma solidity ^0.4.17;
 
 contract Lottery {
+
+    struct Payments {
+        address players;
+        uint value;
+        uint time;
+    }
+
+    struct InactivePayments {
+        address players;
+        uint value;
+        uint time;
+    }
+
+    Payments[] public payments;
+    InactivePayments[] public inactivePayments;
+
     address public owner;
     address[] public players;
     address[] public inactivePlayers;
@@ -15,7 +31,7 @@ contract Lottery {
     }
 
     function enter() public payable {
-        if (msg.value >= .02 ether && now < elapsedTime && number <= 10 && isActive == true) {
+        if (msg.value >= .02 ether && number <= 10 && isActive == true) {
             players.push(msg.sender);
             number++;
         } else {

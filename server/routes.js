@@ -1,5 +1,3 @@
-let {desc} = require('./../src/app');
-
 // Define all the handlers
 let handlers = {};
 
@@ -7,11 +5,11 @@ let handlers = {};
 handlers.api = function (data, callback) {
     callback(200, {'name': 'sample handler'});
 };
-desc = 1;
+
 // RestAPI route handlers
-handlers.info = async function (data, callback) {
+handlers.info = function (data, callback) {
     callback(200, {
-        "description": desc,
+        "description": description,
         "address_input": "number",
         "address_owner": "number",
         "up_to_time": "datetime",
@@ -20,16 +18,18 @@ handlers.info = async function (data, callback) {
 };
 
 handlers.payments = function (data, callback) {
-    callback(200, [{
-            "address": "number",
-            "transfer": "number",
-            "time": "datetime",
-        },
+    callback(200, [
             {
                 "address": "number",
                 "transfer": "number",
                 "time": "datetime",
-            }]
+            },
+            {
+                "address": "number",
+                "transfer": "number",
+                "time": "datetime",
+            }
+        ]
     );
 };
 
