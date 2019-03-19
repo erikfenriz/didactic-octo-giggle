@@ -5,7 +5,7 @@ Both versions (0.4 and ^0.5) of smart contracts were written <br>
 
 Guide: <br>
 - First things first: run **npm install**
-- Use YOUR OWN wallet mnemonic, creating a .env file in project root, and write in: <br> 
+- Use YOUR OWN wallet mnemonic, creating a .env file in the project root, and write in: <br> 
 WALLET = "YOUR OWN MNEMONIC FROM METAMASK"
 - In the same .env file, on a new line add YOUR OWN rpcURL Infura API KEY, writing: <br>
 API_KEY = "YOUR API KEY"
